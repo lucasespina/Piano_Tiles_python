@@ -19,14 +19,16 @@ LIGHT_BLUE = (0, 255, 255)
 # DISPLAY
 WIDTH = 500
 HEIGHT = 600
-window = pygame.display.set_mode((WIDTH,HEIGHT))
-pygame.display.set_caption("TESTE")
-
-
-
 # ASSETS
 KEY_WIDTH = 125
 KEY_HEIGHT = 150
+window = pygame.display.set_mode((KEY_WIDTH*5,HEIGHT))
+pygame.display.set_caption("TESTE")
+nota_img = pygame.image.load('Files/Img/Tecla.png').convert_alpha()
+nota_img = pygame.transform.scale(nota_img, (KEY_WIDTH, KEY_HEIGHT))
+
+
+
 font = pygame.font.SysFont(None,48)
 x1 = 0
 x2 = 0 + KEY_WIDTH
@@ -40,7 +42,7 @@ y4 = 0 - 4 * KEY_HEIGHT
 xposicoes = [x1,x2,x3,x4]
 yposicoes = [y1,y2,y3,y4]
 
-nota = pygame.draw.rect(window,(BLACK),(x1,y,KEY_WIDTH,KEY_HEIGHT))
+#nota = pygame.draw.rect(window,(BLACK),(x1,y,KEY_WIDTH,KEY_HEIGHT))
 
 # DADOS
 
@@ -59,9 +61,7 @@ all_sprites = pygame.sprite.Group()
 # all_white = pygame.sprite.Group()
 # all_gray = pygame.sprite.Group()
 
-
 all_notas = pygame.sprite.Group()
-list_notas = []
 
 # JOGO
 game = True
@@ -77,17 +77,13 @@ while game:
         touch = pygame.mouse.get_pressed
 
     # gerando linhas
-    if len(list_notas) == 0 or list_notas[0][0].rect.y >= 0:
-        novas_notas = []
-        for i in range(4):
-            nota = Nota(False, BLACK, KEY_WIDTH * i, -KEY_HEIGHT)
-            novas_notas[i] = nota
-            all_notas.add(nota)
-            all_sprites.add(nota)
-        list_notas.insert(0, novas_notas)
-
-    while len(list_notas) > 4:
-        del list_notas[-1]
+    while len(all_notas) == 0 or (len(all_notas) < 5 and all_notas.sprites()[-1].rect.y > 0):
+        x = random.randint(0, 4) * KEY_WIDTH
+        y = -KEY_HEIGHT
+        print(x, y)
+        n = Nota(nota_img, x, y)
+        all_notas.add(n)
+        all_sprites.add(n)
 
 
     # ATUALIZA POSICAO
@@ -96,6 +92,7 @@ while game:
 
     window.fill((WHITE))
     
+    all_sprites.draw(window)
     
 
 

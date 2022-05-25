@@ -77,9 +77,6 @@ nota5y = -KEY_HEIGHT
 
 
 
-
-
-
 # =============== JOGO ===============
 while game:
     clock.tick(FPS)
@@ -90,17 +87,18 @@ while game:
             game=False
         if event.type==pygame.MOUSEBUTTONDOWN:
             menu = False
+            
 # =============== CLICK ===============
             posx, posy = pygame.mouse.get_pos()
             print('mouse ',posx, '         ',posy)
             print('nota', nota1x, '-', nota1x+KEY_WIDTH, '---',  nota1y, '-', nota1y+KEY_HEIGHT)
+            
             if posx >= nota1x and posx <= nota1x + KEY_WIDTH and posy >= nota1y and posy <= nota1y + KEY_HEIGHT:
                 cor1 = GREY
-            elif posx >= nota2x and posx <= nota2x + KEY_WIDTH and posy >= nota2y and posy <= nota2y + KEY_HEIGHT:
+            if posx >= nota2x and posx <= nota2x + KEY_WIDTH and posy >= nota2y and posy <= nota2y + KEY_HEIGHT:
                 cor2 = GREY
             else:
                 print("\n ERROU \n")
-
 
 
 
@@ -123,6 +121,7 @@ while game:
 
 
 # =============== LINHAS DIVISORIAS DE NOTAS ===============
+
     else:
         pygame.draw.line(window,BLACK,(KEY_WIDTH*1,0),(KEY_WIDTH*1,HEIGHT),1)
         pygame.draw.line(window,BLACK,(KEY_WIDTH*2,0),(KEY_WIDTH*2,HEIGHT),1)
@@ -131,42 +130,47 @@ while game:
 # =============== CRIA NOTAS ===============
         pygame.draw.rect(window,cor1,(nota1x,nota1y,KEY_WIDTH,KEY_HEIGHT))
         nota1y+=VELOCITY
-        if nota1y>=0:
+        if nota1y>0:
             pygame.draw.rect(window,cor2,(nota2x,nota2y,KEY_WIDTH,KEY_HEIGHT))
             nota2y+=VELOCITY
-        # if nota2y>=0:
-        #     pygame.draw.rect(window,cor3,(nota3x,nota3y,KEY_WIDTH,KEY_HEIGHT))
-        #     nota3y+=VELOCITY
-        # if nota3y>=0:
-        #     pygame.draw.rect(window,cor4,(nota4x,nota4y,KEY_WIDTH,KEY_HEIGHT))
-        #     nota4y+=VELOCITY
-        # if nota4y>=0:
-            # pygame.draw.rect(window,cor5,(nota5x,nota5y,KEY_WIDTH,KEY_HEIGHT))
-            # nota5y+=VELOCITY
+            print(nota1y)
+            print(nota1y)
+        if nota2y>=0:
+            pygame.draw.rect(window,cor3,(nota3x,nota3y,KEY_WIDTH,KEY_HEIGHT))
+            nota3y+=VELOCITY
+        if nota3y>=0:
+            pygame.draw.rect(window,cor4,(nota4x,nota4y,KEY_WIDTH,KEY_HEIGHT))
+            nota4y+=VELOCITY
+        if nota4y>=0:
+            pygame.draw.rect(window,cor5,(nota5x,nota5y,KEY_WIDTH,KEY_HEIGHT))
+            nota5y+=VELOCITY
 
         if nota1y >= HEIGHT:
-            if cor1 == GREY:
-                nota1x = 0 * KEY_WIDTH 
-                nota1y = -KEY_HEIGHT
-                cor1 = BLACK
-            else:
-                menu = True
+            # if cor1 == GREY:
+            nota1x = 0 * KEY_WIDTH 
+            nota1y = -KEY_HEIGHT
+            cor1 = BLACK
+            # else:
+            #     menu = True
         if nota2y >= HEIGHT:
+            # if cor2 == GREY:
             nota2x = 1 * KEY_WIDTH 
             nota2y = -KEY_HEIGHT
             cor2 = BLACK
-        # elif nota3y >= HEIGHT:
-        #     nota3x = 2 * KEY_WIDTH 
-        #     nota3y = -KEY_HEIGHT
-        #     cor3 = BLACK
-        # elif nota4y >= HEIGHT:
-        #     nota4x = 3 * KEY_WIDTH 
-        #     nota4y = -KEY_HEIGHT
-        #     cor4 = BLACK
-        # elif nota5y >= HEIGHT:
-        #     nota5x = 1 * KEY_WIDTH 
-        #     nota5y = -KEY_HEIGHT
-        #     cor5 = BLACK
+            # else:
+            #     menu = True
+        elif nota3y >= HEIGHT:
+            nota3x = 2 * KEY_WIDTH 
+            nota3y = -KEY_HEIGHT
+            cor3 = BLACK
+        elif nota4y >= HEIGHT:
+            nota4x = 3 * KEY_WIDTH 
+            nota4y = -KEY_HEIGHT
+            cor4 = BLACK
+        elif nota5y >= HEIGHT:
+            nota5x = 1 * KEY_WIDTH 
+            nota5y = -KEY_HEIGHT
+            cor5 = BLACK
 
 # =============== CLICOU EM BRANCA ===============
 
