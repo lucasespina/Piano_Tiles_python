@@ -8,10 +8,12 @@ from assets import *
 # Inicialização 
 pygame.init()
 font = pygame.font.SysFont(None,48)
-
+pos = None
 # JOGO
 game = True
+
 while game:
+    pos = None
     clock.tick(FPS)
 
     # EVENTOS
@@ -21,6 +23,11 @@ while game:
             game = False
         # TOQUE
         touch = pygame.mouse.get_pressed
+        
+        
+        #Mouse Posição Click
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            pos = pygame.mouse.get_pos()
 
     # gerando linhas
     while len(all_notas) == 0 or (len(all_notas) < 5 and all_notas.sprites()[-1].rect.y > 0):
@@ -31,10 +38,19 @@ while game:
         all_notas.add(n)
         all_sprites.add(n)
 
-
+    
+    
+    #Tecla Clicada
+    for nota in all_notas:
+        if pos:
+            if nota.rect.collidepoint(pos):
+                nota.kill()
+    
+    
+    
     # ATUALIZA POSICAO
     all_sprites.update()
-
+    
 
     window.fill((WHITE))
     

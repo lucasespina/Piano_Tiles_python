@@ -2,6 +2,9 @@ import pygame
 
 class Nota(pygame.sprite.Sprite):
     def __init__(self,img, x, y):
+        super(Nota, self).__init__()
+        
+        
         pygame.sprite.Sprite.__init__(self)
         self.image = img
         self.rect = self.image.get_rect()

@@ -3,6 +3,7 @@ import pygame
 
 # ------------------ DADOS -----------------------------
 
+click_pos = None
 
 # CORES
 WHITE = (255, 255, 255)
