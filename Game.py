@@ -45,7 +45,8 @@ while game:
     for nota in all_notas:
         if pos:
             if nota.rect.collidepoint(pos):
-                nota.img(nota_img_clicada)
+                # nota.kill()
+                nota.img(nota_img_clicada, nota.rect.x, nota.rect.y)
                 certo = certo or True
     if pos and not certo:
         print("errou")
