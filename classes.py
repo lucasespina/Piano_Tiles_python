@@ -11,8 +11,10 @@ class Nota(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         self.aceleracao = 5
+        self.color = "Preto"
 
     def update(self):
+        
         self.rect.y += self.aceleracao
         if self.rect.y > 600:
             self.kill()
@@ -23,4 +25,4 @@ class Nota(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         self.aceleracao = 5
-        
+        self.color = "Roxo"

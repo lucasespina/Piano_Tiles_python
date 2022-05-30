@@ -11,6 +11,7 @@ font = pygame.font.SysFont(None,48)
 pos = None
 # JOGO
 game = True
+placar = 0
 
 while game:
     pos = None
@@ -45,31 +46,18 @@ while game:
     for nota in all_notas:
         if pos:
             if nota.rect.collidepoint(pos):
-                # nota.kill()
+                print(nota.color)
                 nota.img(nota_img_clicada, nota.rect.x, nota.rect.y)
+                print(nota.color)
                 certo = certo or True
+                FPS = FPS
+                placar = placar + 1
+        if nota.rect.y >= 600 and nota.color=="Preto":
+            print("a")
     if pos and not certo:
         print("errou")
-    
-    
-    # Som ao clicar na nota (não está funcionando ainda)
-
-    # from pygame import *
-
-    #     mixer.init()
-    #     mixer.music.load('musica.wav')
-    #     mixer.music.set_volume(0.7)
-    #     mixer.music.play()
-
-    #     while True:
-
-    #         if nota.rect.collidepoint(pos):
-    #             mixer.music.pause()    
-    #         else:
-    #             mixer.music.unpause()
-    #             time.sleep(100)
-    #         break
-                
+        
+    # print(placar)
 
     
     # ATUALIZA POSICAO
