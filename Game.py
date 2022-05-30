@@ -47,6 +47,25 @@ while game:
                 nota.kill()
     
     
+    # Som ao clicar na nota (não está funcionando ainda)
+
+    # from pygame import *
+
+    #     mixer.init()
+    #     mixer.music.load('musica.wav')
+    #     mixer.music.set_volume(0.7)
+    #     mixer.music.play()
+
+    #     while True:
+
+    #         if nota.rect.collidepoint(pos):
+    #             mixer.music.pause()    
+    #         else:
+    #             mixer.music.unpause()
+    #             time.sleep(100)
+    #         break
+                
+
     
     # ATUALIZA POSICAO
     all_sprites.update()
