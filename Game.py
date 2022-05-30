@@ -41,12 +41,14 @@ while game:
     
     
     #Tecla Clicada
+    certo = False
     for nota in all_notas:
         if pos:
             if nota.rect.collidepoint(pos):
-                nota.kill()
-            else:
-                print("errou")
+                nota.img(nota_img_clicada)
+                certo = certo or True
+    if pos and not certo:
+        print("errou")
     
     
     # Som ao clicar na nota (não está funcionando ainda)

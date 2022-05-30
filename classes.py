@@ -16,3 +16,8 @@ class Nota(pygame.sprite.Sprite):
         self.rect.y += self.aceleracao
         if self.rect.y > 600:
             self.kill()
+            
+    def img(self,img):
+        self.image = img
+        self.rect = self.image.get_rect()
+        

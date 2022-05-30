@@ -3,8 +3,6 @@ import pygame
 
 # ------------------ DADOS -----------------------------
 
-click_pos = None
-
 # CORES
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -22,9 +20,11 @@ HEIGHT = 600
 KEY_WIDTH = 125
 KEY_HEIGHT = 150
 window = pygame.display.set_mode((KEY_WIDTH*5,HEIGHT))
-pygame.display.set_caption("TESTE")
+pygame.display.set_caption("Insper Music")
 nota_img = pygame.image.load('Tecla.png').convert_alpha()
 nota_img = pygame.transform.scale(nota_img, (KEY_WIDTH, KEY_HEIGHT))
+nota_img_clicada = pygame.image.load('teclaclicada.png').convert_alpha()
+nota_img_clicada = pygame.transform.scale(nota_img_clicada, (KEY_WIDTH, KEY_HEIGHT))
 
 
 #nota = pygame.draw.rect(window,(BLACK),(x1,y,KEY_WIDTH,KEY_HEIGHT))
