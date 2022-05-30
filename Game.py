@@ -45,6 +45,8 @@ while game:
         if pos:
             if nota.rect.collidepoint(pos):
                 nota.kill()
+            else:
+                print("errou")
     
     
     
