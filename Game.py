@@ -50,7 +50,7 @@ while game:
                 nota.img(nota_img_clicada, nota.rect.x, nota.rect.y)
                 
                 #Aumentando a velocidade após clicar
-                FPS = FPS + 1
+                FPS = FPS
                 
                 #Adicionando Score
                 placar = placar + 1
