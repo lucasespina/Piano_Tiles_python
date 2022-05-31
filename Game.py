@@ -55,7 +55,7 @@ while game:
                 nota.img(nota_img_clicada, nota.rect.x, nota.rect.y)
                 
                 #Aumentando a velocidade após clicar
-                FPS = FPS
+                FPS = FPS + 1
                 
                 #Adicionando Score
                 score += 1
@@ -75,10 +75,9 @@ while game:
     
 
     window.fill((WHITE))
-    window.blit(scoreText, (300, 10))
 
     all_sprites.draw(window)
-
+    window.blit(scoreText, (300, 10))
 
     pygame.display.update()
 
