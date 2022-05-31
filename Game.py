@@ -8,14 +8,19 @@ from assets import *
 # Inicialização 
 pygame.init()
 font = pygame.font.SysFont(None,48)
+scoreFont = pygame.font.SysFont(None, 40)
+
 pos = None
 # JOGO
 game = True
-placar = 0
+score = 0
 
 while game:
     pos = None
     clock.tick(FPS)
+
+    scoreText = scoreFont.render('{0}'.format(score) , True, RED)
+
 
     # EVENTOS
     for event in pygame.event.get():
@@ -53,14 +58,14 @@ while game:
                 FPS = FPS
                 
                 #Adicionando Score
-                placar = placar + 1
-                
+                score += 1
                 
                 certo = certo or True
         if nota.rect.y >= 600 and nota.color=="Preto":
             print("errou")
+            score = 0
     if pos and not certo:
-        print("errou")
+        score = 0
         
     # print(placar)
 
@@ -70,7 +75,8 @@ while game:
     
 
     window.fill((WHITE))
-    
+    window.blit(scoreText, (300, 10))
+
     all_sprites.draw(window)
 
 
