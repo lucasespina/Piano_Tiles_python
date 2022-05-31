@@ -19,7 +19,7 @@ HEIGHT = 600
 # ASSETS
 KEY_WIDTH = 125
 KEY_HEIGHT = 150
-window = pygame.display.set_mode((KEY_WIDTH*5,HEIGHT))
+window = pygame.display.set_mode((KEY_WIDTH*4,HEIGHT))
 pygame.display.set_caption("Insper Music")
 nota_img = pygame.image.load('Tecla.png').convert_alpha()
 nota_img = pygame.transform.scale(nota_img, (KEY_WIDTH, KEY_HEIGHT))

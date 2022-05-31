@@ -37,7 +37,7 @@ while game:
 
     # gerando linhas
     while len(all_notas) == 0 or (len(all_notas) < 5 and all_notas.sprites()[-1].rect.y > 0):
-        x = random.randint(0, 4) * KEY_WIDTH
+        x = random.randint(0, 3) * KEY_WIDTH
         y = -KEY_HEIGHT
         n = Nota(nota_img, x, y)
         all_notas.add(n)
@@ -55,7 +55,7 @@ while game:
                 nota.img(nota_img_clicada, nota.rect.x, nota.rect.y)
                 
                 #Aumentando a velocidade após clicar
-                FPS = FPS + 1
+                FPS += 1
                 
                 #Adicionando Score
                 score += 1
@@ -64,9 +64,11 @@ while game:
         if nota.rect.y >= 600 and nota.color=="Preto":
             print("errou")
             score = 0
+            FPS = 60
+            
     if pos and not certo:
         score = 0
-        
+        FPS = 60
     # print(placar)
 
     
@@ -77,7 +79,7 @@ while game:
     window.fill((WHITE))
 
     all_sprites.draw(window)
-    window.blit(scoreText, (300, 10))
+    window.blit(scoreText, (250, 10))
 
     pygame.display.update()
 
