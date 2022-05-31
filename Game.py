@@ -34,7 +34,6 @@ while game:
     while len(all_notas) == 0 or (len(all_notas) < 5 and all_notas.sprites()[-1].rect.y > 0):
         x = random.randint(0, 4) * KEY_WIDTH
         y = -KEY_HEIGHT
-        print(x, y)
         n = Nota(nota_img, x, y)
         all_notas.add(n)
         all_sprites.add(n)
@@ -46,14 +45,20 @@ while game:
     for nota in all_notas:
         if pos:
             if nota.rect.collidepoint(pos):
-                print(nota.color)
+                
+                #Mudando a cor da tecla clicada
                 nota.img(nota_img_clicada, nota.rect.x, nota.rect.y)
-                print(nota.color)
-                certo = certo or True
-                FPS = FPS
+                
+                #Aumentando a velocidade após clicar
+                FPS = FPS + 1
+                
+                #Adicionando Score
                 placar = placar + 1
+                
+                
+                certo = certo or True
         if nota.rect.y >= 600 and nota.color=="Preto":
-            print("a")
+            print("errou")
     if pos and not certo:
         print("errou")
         
