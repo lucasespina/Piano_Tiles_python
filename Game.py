@@ -1,5 +1,6 @@
 # Imports 
 import pygame
+from pygame import mixer
 import random
 import time 
 from classes import Nota
@@ -14,6 +15,10 @@ pos = None
 # JOGO
 game = True
 score = 0
+
+mixer.init()
+mixer.music.load("wrong.wav")
+mixer.music.set_volume(0.2)
 
 while game:
     pos = None
@@ -61,14 +66,18 @@ while game:
                 score += 1
                 
                 certo = certo or True
+                
         if nota.rect.y >= 600 and nota.color=="Preto":
             print("errou")
+            
+            mixer.music.play()
             score = 0
             FPS = 60
             
     if pos and not certo:
         score = 0
         FPS = 60
+        mixer.music.play()
     # print(placar)
 
     
