@@ -21,11 +21,14 @@ score = 0
 highscore = 0
 
 mixer.init()
-mixer.music.set_volume(0.2)
+mixer.music.set_volume(0.02)
 sound_wrong = pygame.mixer.Sound('wrong.wav')
-sound_hit = 0
-sound_hits = [pygame.mixer.Sound('musica.wav')]
-#mixer.music.load('musica.mp3')
+soundC = pygame.mixer.Sound('piano_C.wav')
+
+
+
+
+listaSound = [soundC]
 
 while game:
     pos = None
@@ -46,7 +49,8 @@ while game:
         #Mouse Posição Click
         if event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
-
+            
+        
     if menu:
         tela_menu_inicial(window)
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -75,16 +79,20 @@ while game:
             all_sprites.add(n)
 
         
-        
         #Tecla Clicada
         certo = False
         for nota in all_notas:
             if pos:
                 if nota.rect.collidepoint(pos):
-                    
+
+                   
+                    numeroNota = random.randint(0,len(listaSound)-1)
+                    listaSound[numeroNota].play()
+
                     #Mudando a cor da tecla clicada
                     nota.img(nota_img_clicada, nota.rect.x, nota.rect.y)
                     
+
                     #Aumentando a velocidade após clicar
                     FPS += 1
                     
@@ -92,9 +100,7 @@ while game:
                     score += 1
                     
                     certo = certo or True
-                    sound_hits[sound_hit].play()
-                    sound_hit = (sound_hit + 1) % len(sound_hits)
-                    #Tocando música 
+                    
 
             if nota.rect.y >= 600 and nota.color=="Preto":
                 print("errou")
