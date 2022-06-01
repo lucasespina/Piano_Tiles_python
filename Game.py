@@ -21,8 +21,11 @@ score = 0
 highscore = 0
 
 mixer.init()
-mixer.music.load("wrong.wav")
 mixer.music.set_volume(0.2)
+sound_wrong = pygame.mixer.Sound('wrong.wav')
+sound_hit = 0
+sound_hits = [pygame.mixer.Sound('musica.wav')]
+#mixer.music.load('musica.mp3')
 
 while game:
     pos = None
@@ -89,22 +92,17 @@ while game:
                     score += 1
                     
                     certo = certo or True
-                    
+                    sound_hits[sound_hit].play()
+                    sound_hit = (sound_hit + 1) % len(sound_hits)
                     #Tocando música 
 
-                    # sound = pygame.mixer.Sound(file='musicateste.wav')
-                    # raw_array = sound.get_raw()
-                    # raw_array = raw_array[1:5]
-                    # cut_sound = pygame.mixer.Sound(buffer=raw_array)
-                    # cut_sound.play(-1)
-                   
             if nota.rect.y >= 600 and nota.color=="Preto":
                 print("errou")
                 if score > highscore:
                     print('NEW HIGHSCORE')
                     highscore = score
                 print('HIGHSCORE',highscore)
-                mixer.music.play()
+                sound_wrong.play()
                 score = 0
                 FPS = 60
                 menuPreta = True
@@ -116,7 +114,7 @@ while game:
             print('HIGHSCORE', highscore)
             score = 0
             FPS = 60
-            mixer.music.play()
+            sound_wrong.play()
             menuBranca = True
 
         
