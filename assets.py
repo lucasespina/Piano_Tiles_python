@@ -12,6 +12,7 @@ BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
 PINK = (255, 0, 255)
 LIGHT_BLUE = (0, 255, 255)
+GREY = (152,152,152)
 
 # DISPLAY
 WIDTH = 500
@@ -58,3 +59,53 @@ all_sprites = pygame.sprite.Group()
 
 all_notas = pygame.sprite.Group()
 
+# MENU
+pygame.font.init()
+font=pygame.font.SysFont('arial',45)
+font_erro = pygame.font.SysFont('arial',30)
+
+title=font.render("PIANO TILES",1,BLACK)
+begin=font.render("Clique para iniciar!",1,BLUE)
+textPERDEU=font_erro.render("PERDEU!!!",1,WHITE)
+textBRANCA=font_erro.render('VOCE APERTOU UMA NOTA BRANCA!',1,WHITE)
+textPRETA=font_erro.render('VOCE PERDEU UMA NOTA PRETA!',1,WHITE)
+
+def tela_menu_inicial(tela):
+    clock = pygame.time.Clock()
+    # FUNDO 
+    tela.fill(GREY)
+    titulotexto = title.get_rect()
+    titulotexto.center=(250,200)
+    tela.blit(title,titulotexto)
+    comecetexto = begin.get_rect()
+    comecetexto.center = (250, 400)
+    tela.blit(begin,comecetexto)
+    
+    return None
+
+def tela_menu_preta(tela):
+    clock = pygame.time.Clock()
+    # FUNDO 
+    tela.fill(GREY)
+    perdeutexto = textPERDEU.get_rect()
+    perdeutexto.center=(250,200)
+    tela.blit(textPERDEU,perdeutexto)
+    pretatexto = textPRETA.get_rect()
+    pretatexto.center = (250, 400)
+    tela.blit(textPRETA,pretatexto)
+    
+    return None
+
+
+def tela_menu_branca(tela):
+    clock = pygame.time.Clock()
+    # FUNDO 
+    tela.fill(GREY)
+    perdeutexto = textPERDEU.get_rect()
+    perdeutexto.center=(250,200)
+    tela.blit(textPERDEU,perdeutexto)
+    brancatexto = textBRANCA.get_rect()
+    brancatexto.center = (250, 400)
+    tela.blit(textBRANCA,brancatexto)
+    
+    return None
