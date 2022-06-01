@@ -109,3 +109,18 @@ def tela_menu_branca(tela):
     tela.blit(textBRANCA,brancatexto)
     
     return None
+
+pygame.mixer.init()
+sound = pygame.mixer
+def som (musica):
+    pygame.mixer.music.load(musica)
+    pygame.mixer.music.set_volume(0.7)
+    
+    start = 0.2
+                    end = 0.4
+                    def play(sound, start, end):
+                        sound.set_pos(start)
+                        sound.play()
+                        time.sleep(end - start)     # in seconds
+                        sound.stop()
+                

@@ -90,6 +90,14 @@ while game:
                     
                     certo = certo or True
                     
+                    #Tocando música 
+
+                    # sound = pygame.mixer.Sound(file='musicateste.wav')
+                    # raw_array = sound.get_raw()
+                    # raw_array = raw_array[1:5]
+                    # cut_sound = pygame.mixer.Sound(buffer=raw_array)
+                    # cut_sound.play(-1)
+                   
             if nota.rect.y >= 600 and nota.color=="Preto":
                 print("errou")
                 if score > highscore:
