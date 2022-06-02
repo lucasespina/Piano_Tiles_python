@@ -65,7 +65,7 @@ font_1 = pygame.font.SysFont('Helvetica Bold', 50)
 font_2 = pygame.font.SysFont('Helvetica', 30)
 font_3 = pygame.font.SysFont('Helvetica', 25)
 
-title1 = font_1.render(" PIANO \n TILES ", 1 , WHITE)
+title1 = font_1.render('PIANO \n TILES', 1 , WHITE)
 title2 = font_3.render(" Inspermusic Game :) ", 1 , GREY)
 begin = font_1.render("*Clique na tela para iniciar*",1, PINK)
 textPERDEU = font_2.render("Oops!! \n Você perdeu :(",1, RED)
@@ -82,7 +82,7 @@ def tela_menu_inicial(tela):
 
     # Escritos do menu inicial
     titulotexto = title1.get_rect()
-    titulotexto.center=(250,150)
+    titulotexto.center=(250, 150)
     tela.blit(title1,titulotexto)
 
     autortexto = title2.get_rect()
@@ -90,7 +90,7 @@ def tela_menu_inicial(tela):
     tela.blit(title2,autortexto)
 
     comecetexto = begin.get_rect()
-    comecetexto.center = (250, 4500)
+    comecetexto.center = (250, 450)
     tela.blit(begin,comecetexto)
     
     return None
