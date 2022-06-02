@@ -4,7 +4,7 @@
 from pytube import YouTube
 import os
 
-url = 'https://www.youtube.com/watch?v=4GSXyo3euR4'
+url = 'https://youtu.be/kS7RzOWQDRk'
 yt = YouTube(url)
 video = yt.streams.filter(only_audio=True).first()
 downloaded_file = video.download()

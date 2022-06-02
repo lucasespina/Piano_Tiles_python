@@ -24,18 +24,6 @@ highscore = 0
 # Definindo sons
 mixer.init()
 mixer.music.set_volume(0.07)
-# Som de tecla errada
-sound_wrong = pygame.mixer.Sound('wrong.wav')
-# Sons de melodia para teclas certas
-soundA = pygame.mixer.Sound('piano_A.wav')
-soundB = pygame.mixer.Sound('piano_B.wav')
-soundC = pygame.mixer.Sound('piano_C.wav')
-soundD = pygame.mixer.Sound('piano_D.wav')
-soundE = pygame.mixer.Sound('piano_E.wav')
-soundF = pygame.mixer.Sound('piano_F.wav')
-soundG = pygame.mixer.Sound('piano_G.wav')
-
-listaSound = [soundA, soundB, soundC, soundD, soundE, soundF, soundG]
 
 # Rodando o Jogo
 while game:
