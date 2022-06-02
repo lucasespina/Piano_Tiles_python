@@ -12,7 +12,8 @@ font = pygame.font.SysFont(None,48)
 scoreFont = pygame.font.SysFont(None, 40)
 
 pos = None
-# JOGO
+
+# Variaveis
 game = True
 menu = True
 menuPreta = False
@@ -22,7 +23,7 @@ highscore = 0
 
 # Definindo sons
 mixer.init()
-mixer.music.set_volume(0.02)
+mixer.music.set_volume(0.07)
 # Som de tecla errada
 sound_wrong = pygame.mixer.Sound('wrong.wav')
 # Sons de melodia para teclas certas
@@ -36,12 +37,12 @@ soundG = pygame.mixer.Sound('piano_G.wav')
 
 listaSound = [soundA, soundB, soundC, soundD, soundE, soundF, soundG]
 
+# Rodando o Jogo
 while game:
     pos = None
     clock.tick(FPS)
 
     scoreText = scoreFont.render('{0}'.format(score) , True, RED)
-
 
     # EVENTOS
     for event in pygame.event.get():
@@ -51,12 +52,10 @@ while game:
         # TOQUE
         touch = pygame.mouse.get_pressed
         
-        
-        #Mouse Posição Click
+        # Mouse Posição Click
         if event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
             
-        
     if menu:
         tela_menu_inicial(window)
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -74,7 +73,6 @@ while game:
     #     if event.type == pygame.MOUSEBUTTONDOWN:
     #         menuBranca = False
 
-
     else:
         # gerando linhas
         while len(all_notas) == 0 or (len(all_notas) < 5 and all_notas.sprites()[-1].rect.y > 0):
@@ -91,13 +89,12 @@ while game:
             if pos:
                 if nota.rect.collidepoint(pos):
 
-                   
+                   # Tocando a nota, ao acertar a posição
                     numeroNota = random.randint(0,len(listaSound)-1)
                     listaSound[numeroNota].play()
 
                     #Mudando a cor da tecla clicada
                     nota.img(nota_img_clicada, nota.rect.x, nota.rect.y)
-                    
 
                     #Aumentando a velocidade após clicar
                     FPS += 1
@@ -107,26 +104,33 @@ while game:
                     
                     certo = certo or True
                     
-
+            # Erros da nota preta que passou
             if nota.rect.y >= 600 and nota.color=="Preto":
                 print("errou")
                 if score > highscore:
                     print('NEW HIGHSCORE')
                     highscore = score
                 print('HIGHSCORE',highscore)
+                # Som de errado
                 sound_wrong.play()
+                
                 score = 0
                 FPS = 60
-                menuPreta = True
                 
+                menuPreta = True
+
+        # Erros de nota não preta   
         if pos and not certo:
             if score > highscore:
                 print('NEW HIGHSCORE')
                 highscore = score
             print('HIGHSCORE', highscore)
+            
             score = 0
             FPS = 60
+            # Som de errado
             sound_wrong.play()
+            
             menuBranca = True
 
         
