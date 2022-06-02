@@ -61,16 +61,16 @@ all_notas = pygame.sprite.Group()
 
 # MENU
 pygame.font.init()
-font_1 = pygame.font.SysFont('Helvetica Bold', 50)
-font_2 = pygame.font.SysFont('Helvetica', 30)
-font_3 = pygame.font.SysFont('Helvetica', 25)
+font_1 = pygame.font.SysFont('Helvetica Bold', 70)
+font_2 = pygame.font.SysFont('Helvetica Italic', 50)
+font_3 = pygame.font.SysFont('Helvetica', 40)
 
 title1 = font_1.render('PIANO \n TILES', 1 , WHITE)
-title2 = font_3.render(" Inspermusic Game :) ", 1 , GREY)
-begin = font_1.render("*Clique na tela para iniciar*",1, PINK)
-textPERDEU = font_2.render("Oops!! \n Você perdeu :(",1, RED)
-textBRANCA = font_2.render('Apertou uma nota branca...',1,WHITE)
-textPRETA = font_2.render('Perdeu uma nota preta...',1,WHITE)
+title2 = font_2.render(" Inspermusic Game :) ", 1 , GREY)
+begin = font_3.render("*Clique na tela para iniciar*",1, PINK)
+textPERDEU = font_1.render("Oops!! \n Você perdeu :(",1, RED)
+textBRANCA = font_3.render('Apertou uma nota branca...',1,WHITE)
+textPRETA = font_3.render('Perdeu uma nota preta...',1,WHITE)
 
 background_image = pygame.image.load('piano.png')
 
