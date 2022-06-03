@@ -65,6 +65,7 @@ while game:
         # gerando linhas
         while len(all_notas) == 0 or (len(all_notas) < 5 and all_notas.sprites()[-1].rect.y > 0):
             x = random.randint(0, 3) * KEY_WIDTH
+            # x = KEY_WIDTH
             y = -KEY_HEIGHT
             n = Nota(nota_img, x, y)
             all_notas.add(n)
@@ -78,19 +79,22 @@ while game:
                 if nota.rect.collidepoint(pos):
 
                    # Tocando a nota, ao acertar a posição
-                    numeroNota = random.randint(0,len(listaSound)-1)
-                    listaSound[numeroNota].play()
+                   
+                   if nota.color=="Preto":
+                   
+                        numeroNota = random.randint(0,len(listaSound)-1)
+                        listaSound[numeroNota].play()
 
                     #Mudando a cor da tecla clicada
-                    nota.img(nota_img_clicada, nota.rect.x, nota.rect.y)
+                        nota.img(nota_img_clicada, nota.rect.x, nota.rect.y)
 
-                    #Aumentando a velocidade após clicar
-                    FPS += 1
-                    
-                    #Adicionando Score
-                    score += 1
-                    
-                    certo = certo or True
+                        #Aumentando a velocidade após clicar
+                        FPS += 1
+                        
+                        #Adicionando Score
+                        score += 1
+                        
+                        certo = certo or True
                     
             # Erros da nota preta que passou
             if nota.rect.y >= 600 and nota.color=="Preto":
@@ -117,6 +121,7 @@ while game:
             score = 0
             FPS = 60
             # Som de errado
+            
             sound_wrong.play()
             
             menuBranca = True
