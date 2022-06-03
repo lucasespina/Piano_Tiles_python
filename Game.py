@@ -33,8 +33,13 @@ while game:
             
     if menu_inicial:
         tela_menu_inicial(window)
+        if not play_one:
+            sound_menu.play(loops=-1)
+            play_one = True
+            
         if event.type == pygame.MOUSEBUTTONDOWN:
-           menu_inicial = False
+            sound_menu.stop()
+            menu_inicial = False
 
     # ======= FALTA RECOMECAR ======
     elif menuPreta:
@@ -62,7 +67,7 @@ while game:
             velocity = 15
             aceleration = 1
 
-        # GRUPOS
+            # GRUPOS
             all_sprites = pygame.sprite.Group()
             all_notas = pygame.sprite.Group()
 
@@ -78,7 +83,6 @@ while game:
             all_notas.add(n)
             all_sprites.add(n)
 
-        
         #Tecla Clicada
         certo = False
         for nota in all_notas:
@@ -92,7 +96,7 @@ while game:
                         numeroNota = random.randint(0,len(listaSound)-1)
                         listaSound[numeroNota].play()
 
-                    #Mudando a cor da tecla clicada
+                        #Mudando a cor da tecla clicada
                         nota.img(nota_img_clicada, nota.rect.x, nota.rect.y)
 
                         #Aumentando a velocidade após clicar
@@ -101,6 +105,8 @@ while game:
                         #Adicionando Score
                         score += 1
                         
+                        
+                        # Conferindo posição certa
                         certo = certo or True
                     
             # Erros da nota preta que passou
@@ -119,6 +125,7 @@ while game:
                 menuPreta = True
 
         # Erros de nota não preta   
+        
         if pos and not certo:
             if score > highscore:
                 print('NEW HIGHSCORE')
@@ -140,11 +147,18 @@ while game:
         window.fill((WHITE))
 
         all_sprites.draw(window)
+        pygame.draw.line(window,BLACK,(KEY_WIDTH*1,0),(KEY_WIDTH*1,HEIGHT),1)
+        pygame.draw.line(window,BLACK,(KEY_WIDTH*2,0),(KEY_WIDTH*2,HEIGHT),1)
+        pygame.draw.line(window,BLACK,(KEY_WIDTH*3,0),(KEY_WIDTH*3,HEIGHT),1)
+
+        
+        
+        
+        
+        
         window.blit(scoreText, (250, 10))
 
     pygame.display.update()
-
-
 
 pygame.quit()
 

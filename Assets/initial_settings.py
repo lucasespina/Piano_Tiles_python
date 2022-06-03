@@ -7,7 +7,7 @@ from pygame import mixer
 
 
 pos = None
-
+play_one = False
 # Variaveis
 game = True
 menu_inicial = True
@@ -33,6 +33,8 @@ LIGHT_BLUE = (0, 255, 255)
 GREY = (152,152,152)
 
 pygame.mixer.init()
+
+sound_menu = pygame.mixer.Sound('Sounds/menu.wav')
 # Som de tecla errada
 sound_wrong = pygame.mixer.Sound('Sounds/wrong.wav')
 # Sons de melodia para teclas certas
