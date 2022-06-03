@@ -8,24 +8,10 @@ from Assets.initial_configs import *
 
 # Inicialização 
 pygame.init()
+
 font = pygame.font.SysFont(None,48)
 scoreFont = pygame.font.SysFont(None, 40)
 
-pos = None
-
-# Variaveis
-game = True
-menu_inicial = True
-menuPreta = False
-menuBranca = False
-score = 0
-highscore = 0
-
-# Definindo sons
-mixer.init()
-mixer.music.set_volume(0.07)
-
-# Rodando o Jogo
 while game:
     
     pos = None

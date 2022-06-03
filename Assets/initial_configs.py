@@ -1,7 +1,25 @@
 
 import pygame
-
+from pygame import mixer
 # ------------------ DADOS -----------------------------
+
+#First Display Config
+
+
+pos = None
+
+# Variaveis
+game = True
+menu_inicial = True
+menuPreta = False
+menuBranca = False
+score = 0
+highscore = 0
+
+# Definindo sons
+mixer.init()
+mixer.music.set_volume(0.07)
+
 
 # CORES
 WHITE = (255, 255, 255)
