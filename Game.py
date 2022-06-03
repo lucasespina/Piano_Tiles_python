@@ -15,7 +15,7 @@ pos = None
 
 # Variaveis
 game = True
-menu = True
+menu_inicial = True
 menuPreta = False
 menuBranca = False
 score = 0
@@ -27,6 +27,7 @@ mixer.music.set_volume(0.07)
 
 # Rodando o Jogo
 while game:
+    
     pos = None
     clock.tick(FPS)
 
@@ -44,22 +45,42 @@ while game:
         if event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
             
-    if menu:
+    if menu_inicial:
         tela_menu_inicial(window)
         if event.type == pygame.MOUSEBUTTONDOWN:
-            menu = False
+           menu_inicial = False
 
     # ======= FALTA RECOMECAR ======
     elif menuPreta:
         tela_menu_preta(window)
         if event.type == pygame.MOUSEBUTTONDOWN:
-            menuPreta = False
+            pos = None
+            score = 0
+            highscore = 0
+            
+            x1 = 0
+            x2 = 0 + KEY_WIDTH
+            x3 = 0 + (2*KEY_WIDTH)
+            x4 = 0 + (3*KEY_WIDTH)
+            y = 0 - KEY_HEIGHT
+            y1 = 0 - KEY_HEIGHT
+            y2 = 0 - 2 * KEY_HEIGHT
+            y3 = 0 - 3 * KEY_HEIGHT
+            y4 = 0 - 4 * KEY_HEIGHT
+            xposicoes = [x1,x2,x3,x4]
+            yposicoes = [y1,y2,y3,y4]
 
-# ======= FALTA RECOMECAR & ARRUMAR CLICK ======
-    # elif menuBranca:
-    #     tela_menu_branca(window)
-    #     if event.type == pygame.MOUSEBUTTONDOWN:
-    #         menuBranca = False
+            # CONTROLE DE VELOCIDADE
+            clock = pygame.time.Clock()
+            FPS = 60
+            velocity = 15
+            aceleration = 1
+
+        # GRUPOS
+            all_sprites = pygame.sprite.Group()
+            all_notas = pygame.sprite.Group()
+
+            menuPreta = False
 
     else:
         # gerando linhas
@@ -126,7 +147,6 @@ while game:
             
             menuBranca = True
 
-        
         # ATUALIZA POSICAO
         all_sprites.update()
         

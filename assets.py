@@ -16,15 +16,15 @@ GREY = (152,152,152)
 
 pygame.mixer.init()
 # Som de tecla errada
-sound_wrong = pygame.mixer.Sound('wrong.wav')
+sound_wrong = pygame.mixer.Sound('Sounds/wrong.wav')
 # Sons de melodia para teclas certas
-soundA = pygame.mixer.Sound('piano_A.wav')
-soundB = pygame.mixer.Sound('piano_B.wav')
-soundC = pygame.mixer.Sound('piano_C.wav')
-soundD = pygame.mixer.Sound('piano_D.wav')
-soundE = pygame.mixer.Sound('piano_E.wav')
-soundF = pygame.mixer.Sound('piano_F.wav')
-soundG = pygame.mixer.Sound('piano_G.wav')
+soundA = pygame.mixer.Sound('Sounds/piano_A.wav')
+soundB = pygame.mixer.Sound('Sounds/piano_B.wav')
+soundC = pygame.mixer.Sound('Sounds/piano_C.wav')
+soundD = pygame.mixer.Sound('Sounds/piano_D.wav')
+soundE = pygame.mixer.Sound('Sounds/piano_E.wav')
+soundF = pygame.mixer.Sound('Sounds/piano_F.wav')
+soundG = pygame.mixer.Sound('Sounds/piano_G.wav')
 # Lista de sons para notas
 listaSound = [soundA, soundB, soundC, soundD, soundE, soundF, soundG]
 
@@ -36,9 +36,9 @@ KEY_WIDTH = 125
 KEY_HEIGHT = 150
 window = pygame.display.set_mode((KEY_WIDTH*4,HEIGHT))
 pygame.display.set_caption("Insper Music")
-nota_img = pygame.image.load('Tecla.png').convert_alpha()
+nota_img = pygame.image.load('Images/Tecla.png').convert_alpha()
 nota_img = pygame.transform.scale(nota_img, (KEY_WIDTH, KEY_HEIGHT))
-nota_img_clicada = pygame.image.load('teclaclicada.png').convert_alpha()
+nota_img_clicada = pygame.image.load('Images/teclaclicada.png').convert_alpha()
 nota_img_clicada = pygame.transform.scale(nota_img_clicada, (KEY_WIDTH, KEY_HEIGHT))
 
 
@@ -60,7 +60,7 @@ yposicoes = [y1,y2,y3,y4]
 
 # CONTROLE DE VELOCIDADE
 clock = pygame.time.Clock()
-FPS = 50
+FPS = 60
 velocity = 15
 aceleration = 1
 
@@ -87,7 +87,7 @@ textPERDEU = font_2.render("Oops!! Você perdeu :(",1, RED)
 textBRANCA = font_3.render('Apertou uma nota branca...',1,WHITE)
 textPRETA = font_3.render('Esqueceu de uma nota preta...',1,WHITE)
 
-background_image = pygame.image.load('piano.png')
+background_image = pygame.image.load('Images/piano.png')
 
 def tela_menu_inicial(tela):
     clock = pygame.time.Clock()
