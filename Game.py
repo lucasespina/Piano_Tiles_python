@@ -89,7 +89,6 @@ while game:
             if pos:
                 if nota.rect.collidepoint(pos):
 
-                   
                    #Tocando nota
                    if nota.color=="Preto":
 
@@ -117,19 +116,28 @@ while game:
                     highscore = score
                 print('HIGHSCORE',highscore)
                 # Som de errado
+                
+                
+                menuPreta = True
+                
                 sound_wrong.play()
                 
                 score = 0
                 FPS = 60
                 
-                menuPreta = True
+                
 
         # Erros de nota não preta   
         
         if pos and not certo:
+            
+            
+            
+            
             if score > highscore:
                 print('NEW HIGHSCORE')
                 highscore = score
+                menuPreta = True
             print('HIGHSCORE', highscore)
             
             score = 0
@@ -138,7 +146,8 @@ while game:
             
             sound_wrong.play()
             
-            menuBranca = True
+            menuPreta = True
+            
 
         # ATUALIZA POSICAO
         all_sprites.update()

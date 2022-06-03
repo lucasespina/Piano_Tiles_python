@@ -110,6 +110,7 @@ textBRANCA = font_3.render('Apertou uma nota branca...',1,WHITE)
 textPRETA = font_3.render('Esqueceu de uma nota preta...',1,WHITE)
 
 background_image = pygame.image.load('Images/Fundo.png')
+lose_image = pygame.image.load('Images/lose.png')
 
 def tela_menu_inicial(tela):
     clock = pygame.time.Clock()
@@ -124,30 +125,8 @@ def tela_menu_inicial(tela):
 def tela_menu_preta(tela):
     clock = pygame.time.Clock()
     # FUNDO 
-    tela.fill(BLACK)
-    perdeutexto = textPERDEU.get_rect()
-    perdeutexto.center=(250,200)
-    tela.blit(textPERDEU,perdeutexto)
-    
-    pretatexto = textPRETA.get_rect()
-    pretatexto.center = (250, 400)
-    tela.blit(textPRETA,pretatexto)
+    tela.blit(lose_image, (0,0))
     
     return None
 
-
-def tela_menu_branca(tela):
-    clock = pygame.time.Clock()
-    # FUNDO 
-    tela.fill(BLACK)
-
-    perdeutexto = textPERDEU.get_rect()
-    perdeutexto.center=(250,200)
-    tela.blit(textPERDEU,perdeutexto)
-    
-    brancatexto = textBRANCA.get_rect()
-    brancatexto.center = (250, 400)
-    tela.blit(textBRANCA,brancatexto)
-    
-    return None
 
