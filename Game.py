@@ -89,10 +89,11 @@ while game:
             if pos:
                 if nota.rect.collidepoint(pos):
 
-                   # Tocando a nota, ao acertar a posição
                    
+                   #Tocando nota
                    if nota.color=="Preto":
-                   
+
+                        #Som da tecla
                         numeroNota = random.randint(0,len(listaSound)-1)
                         listaSound[numeroNota].play()
 
@@ -104,8 +105,7 @@ while game:
                         
                         #Adicionando Score
                         score += 1
-                        
-                        
+                    
                         # Conferindo posição certa
                         certo = certo or True
                     
@@ -143,7 +143,6 @@ while game:
         # ATUALIZA POSICAO
         all_sprites.update()
         
-
         window.fill((WHITE))
 
         all_sprites.draw(window)
@@ -151,11 +150,6 @@ while game:
         pygame.draw.line(window,BLACK,(KEY_WIDTH*2,0),(KEY_WIDTH*2,HEIGHT),1)
         pygame.draw.line(window,BLACK,(KEY_WIDTH*3,0),(KEY_WIDTH*3,HEIGHT),1)
 
-        
-        
-        
-        
-        
         window.blit(scoreText, (250, 10))
 
     pygame.display.update()
