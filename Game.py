@@ -3,8 +3,8 @@ import pygame
 from pygame import mixer
 import random
 import time 
-from classes import Nota
-from assets import *
+from Assets.classes import Nota
+from Assets.initial_configs import *
 
 # Inicialização 
 pygame.init()
