@@ -4,7 +4,7 @@ from pygame import mixer
 import random
 import time 
 from Assets.classes import Nota
-from Assets.initial_configs import *
+from Assets.initial_settings import *
 
 # Inicialização 
 pygame.init()
