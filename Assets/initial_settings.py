@@ -54,10 +54,12 @@ KEY_WIDTH = 125
 KEY_HEIGHT = 150
 window = pygame.display.set_mode((KEY_WIDTH*4,HEIGHT))
 pygame.display.set_caption("Insper Music")
+pygame.display.set_icon(pygame.image.load('Images/icone.png'))
 nota_img = pygame.image.load('Images/Tecla.png').convert_alpha()
 nota_img = pygame.transform.scale(nota_img, (KEY_WIDTH, KEY_HEIGHT))
 nota_img_clicada = pygame.image.load('Images/teclaclicada.png').convert_alpha()
 nota_img_clicada = pygame.transform.scale(nota_img_clicada, (KEY_WIDTH, KEY_HEIGHT))
+
 
 
 #nota = pygame.draw.rect(window,(BLACK),(x1,y,KEY_WIDTH,KEY_HEIGHT))
@@ -93,19 +95,19 @@ all_notas = pygame.sprite.Group()
 
 # MENU
 pygame.font.init()
-font_1 = pygame.font.SysFont('Helvetica Bold', 90)
+# font_1 = pygame.font.SysFont('Helvetica Bold', 90)
 font_2 = pygame.font.SysFont('Helvetica Bold Italic', 50)
 font_3 = pygame.font.SysFont('Helvetica Bold', 40)
 
-title1 = font_1.render('PIANO', 1 , WHITE)
-title2 = font_1.render('TILES', 1 , WHITE)
-title3 = font_2.render("Inspermusic Game ", 1 , GREY)
-begin = font_3.render("<Clique na tela para iniciar>",1, PINK)
+# title1 = font_1.render('PIANO', 1 , WHITE)
+# title2 = font_1.render('TILES', 1 , WHITE)
+# title3 = font_2.render("Inspermusic Game ", 1 , GREY)
+# begin = font_3.render("<Clique na tela para iniciar>",1, PINK)
 textPERDEU = font_2.render("Oops!! Você perdeu :(",1, RED)
 textBRANCA = font_3.render('Apertou uma nota branca...',1,WHITE)
 textPRETA = font_3.render('Esqueceu de uma nota preta...',1,WHITE)
 
-background_image = pygame.image.load('Images/piano.png')
+background_image = pygame.image.load('Images/Fundo.png')
 
 def tela_menu_inicial(tela):
     clock = pygame.time.Clock()
@@ -114,23 +116,6 @@ def tela_menu_inicial(tela):
 
     # FUNDO 
     tela.blit(background_image, (0,0))
-
-    # Escritos do menu inicial
-    titulotexto = title1.get_rect()
-    titulotexto.center=(250, 150)
-    tela.blit(title1,titulotexto)
-
-    titulotexto2 = title2.get_rect()
-    titulotexto2.center = (250, 200)
-    tela.blit(title2,titulotexto2)
-
-    autortexto = title3.get_rect()
-    autortexto.center = (250, 50)
-    tela.blit(title3,autortexto)
-
-    comecetexto = begin.get_rect()
-    comecetexto.center = (250, 550)
-    tela.blit(begin,comecetexto)
     
     return None
 
