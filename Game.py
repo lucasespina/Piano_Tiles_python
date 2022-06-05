@@ -11,9 +11,12 @@ pygame.init()
 
 font = pygame.font.SysFont(None,48)
 scoreFont = pygame.font.SysFont(None, 40)
+highscoreFont = pygame.font.SysFont(None, 120)
+highscore = 0
+
 
 while game:
-    
+
     pos = None
     clock.tick(FPS)
 
@@ -24,13 +27,15 @@ while game:
         # EXIT
         if event.type == pygame.QUIT:
             game = False
-        # TOQUE
-        touch = pygame.mouse.get_pressed
         
         # Mouse Posição Click
         if event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
             
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_r:
+                    menuPreta = False  
+        
     if menu_inicial:
         tela_menu_inicial(window)
         if not play_one:
@@ -41,40 +46,43 @@ while game:
             sound_menu.stop()
             menu_inicial = False
 
-    # ======= FALTA RECOMECAR ======
+    # Tela de erro
     elif menuPreta:
-        tela_menu_preta(window)
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            pos = None
-            score = 0
-            highscore = 0
-            
-            x1 = 0
-            x2 = 0 + KEY_WIDTH
-            x3 = 0 + (2*KEY_WIDTH)
-            x4 = 0 + (3*KEY_WIDTH)
-            y = 0 - KEY_HEIGHT
-            y1 = 0 - KEY_HEIGHT
-            y2 = 0 - 2 * KEY_HEIGHT
-            y3 = 0 - 3 * KEY_HEIGHT
-            y4 = 0 - 4 * KEY_HEIGHT
-            xposicoes = [x1,x2,x3,x4]
-            yposicoes = [y1,y2,y3,y4]
+        tela_menu_preta(window,highscore)
+        
+        pos = None
+        score = 0
+        # highscore = 0
+        
+        x1 = 0
+        x2 = 0 + KEY_WIDTH
+        x3 = 0 + (2*KEY_WIDTH)
+        x4 = 0 + (3*KEY_WIDTH)
+        y = 0 - KEY_HEIGHT
+        y1 = 0 - KEY_HEIGHT
+        y2 = 0 - 2 * KEY_HEIGHT
+        y3 = 0 - 3 * KEY_HEIGHT
+        y4 = 0 - 4 * KEY_HEIGHT
+        xposicoes = [x1,x2,x3,x4]
+        yposicoes = [y1,y2,y3,y4]
 
-            # CONTROLE DE VELOCIDADE
-            clock = pygame.time.Clock()
-            FPS = 60
-            velocity = 15
-            aceleration = 1
+        # CONTROLE DE VELOCIDADE
+        clock = pygame.time.Clock()
+        FPS = 60
+        velocity = 15
+        aceleration = 1
 
-            # GRUPOS
-            all_sprites = pygame.sprite.Group()
-            all_notas = pygame.sprite.Group()
+        # GRUPOS
+        all_sprites = pygame.sprite.Group()
+        all_notas = pygame.sprite.Group()
 
-            menuPreta = False
 
+    # Começando o jogo
     else:
-        # gerando linhas
+        
+        highscore = 0 
+        
+        #Gerando as notas
         while len(all_notas) == 0 or (len(all_notas) < 5 and all_notas.sprites()[-1].rect.y > 0):
             x = random.randint(0, 3) * KEY_WIDTH
             # x = KEY_WIDTH
@@ -110,55 +118,37 @@ while game:
                     
             # Erros da nota preta que passou
             if nota.rect.y >= 600 and nota.color=="Preto":
-                print("errou")
                 if score > highscore:
-                    print('NEW HIGHSCORE')
                     highscore = score
-                print('HIGHSCORE',highscore)
-                # Som de errado
-                
                 
                 menuPreta = True
                 
+                # Som de errado
                 sound_wrong.play()
-                
-                score = 0
-                FPS = 60
-                
-                
 
         # Erros de nota não preta   
-        
         if pos and not certo:
-            
-            
-            
             
             if score > highscore:
                 print('NEW HIGHSCORE')
                 highscore = score
-                menuPreta = True
-            print('HIGHSCORE', highscore)
-            
-            score = 0
-            FPS = 60
-            # Som de errado
-            
-            sound_wrong.play()
             
             menuPreta = True
             
-
+            # Som de errado
+            sound_wrong.play()
+        
         # ATUALIZA POSICAO
         all_sprites.update()
         
+        # Desenhando tela de jogo
         window.fill((WHITE))
-
         all_sprites.draw(window)
         pygame.draw.line(window,BLACK,(KEY_WIDTH*1,0),(KEY_WIDTH*1,HEIGHT),1)
         pygame.draw.line(window,BLACK,(KEY_WIDTH*2,0),(KEY_WIDTH*2,HEIGHT),1)
         pygame.draw.line(window,BLACK,(KEY_WIDTH*3,0),(KEY_WIDTH*3,HEIGHT),1)
 
+        #Score Text
         window.blit(scoreText, (250, 10))
 
     pygame.display.update()

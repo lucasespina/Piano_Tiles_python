@@ -5,16 +5,14 @@ from pygame import mixer
 
 #First Display Config
 
-
 pos = None
 play_one = False
-# Variaveis
 game = True
 menu_inicial = True
 menuPreta = False
 menuBranca = False
 score = 0
-highscore = 0
+# highscore = 0
 
 # Definindo sons
 mixer.init()
@@ -63,7 +61,6 @@ nota_img_clicada = pygame.image.load('Images/teclaclicada.png').convert_alpha()
 nota_img_clicada = pygame.transform.scale(nota_img_clicada, (KEY_WIDTH, KEY_HEIGHT))
 
 
-
 #nota = pygame.draw.rect(window,(BLACK),(x1,y,KEY_WIDTH,KEY_HEIGHT))
 
 # Width, Height das notas
@@ -86,47 +83,34 @@ FPS = 60
 velocity = 15
 aceleration = 1
 
-
 # GRUPOS
 all_sprites = pygame.sprite.Group()
-# all_black = pygame.sprite.Group()
-# all_white = pygame.sprite.Group()
-# all_gray = pygame.sprite.Group()
 
 all_notas = pygame.sprite.Group()
 
 # MENU
-pygame.font.init()
-# font_1 = pygame.font.SysFont('Helvetica Bold', 90)
-font_2 = pygame.font.SysFont('Helvetica Bold Italic', 50)
-font_3 = pygame.font.SysFont('Helvetica Bold', 40)
-
-# title1 = font_1.render('PIANO', 1 , WHITE)
-# title2 = font_1.render('TILES', 1 , WHITE)
-# title3 = font_2.render("Inspermusic Game ", 1 , GREY)
-# begin = font_3.render("<Clique na tela para iniciar>",1, PINK)
-textPERDEU = font_2.render("Oops!! Você perdeu :(",1, RED)
-textBRANCA = font_3.render('Apertou uma nota branca...',1,WHITE)
-textPRETA = font_3.render('Esqueceu de uma nota preta...',1,WHITE)
 
 background_image = pygame.image.load('Images/Fundo.png')
 lose_image = pygame.image.load('Images/lose.png')
 
 def tela_menu_inicial(tela):
-    clock = pygame.time.Clock()
     
-    # Som do menu
-
     # FUNDO 
     tela.blit(background_image, (0,0))
     
     return None
 
-def tela_menu_preta(tela):
-    clock = pygame.time.Clock()
+def tela_menu_preta(tela,highscore):
     # FUNDO 
     tela.blit(lose_image, (0,0))
+    highscoreFont = pygame.font.SysFont(None, 120)
+    highscoretxt = highscoreFont.render('{0}'.format(highscore) , True, RED)
     
+    if highscore >= 10:
+        tela.blit(highscoretxt, (205, 200))
+    if highscore < 10 :
+        tela.blit(highscoretxt, (230, 200))
+        
     return None
 
 
