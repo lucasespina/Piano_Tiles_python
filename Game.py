@@ -152,12 +152,12 @@ while game:
         # Desenhando tela de jogo
         window.fill((WHITE))
         all_sprites.draw(window)
-        #Desenhando linhas
+        # Desenhando linhas
         pygame.draw.line(window,BLACK,(KEY_WIDTH*1,0),(KEY_WIDTH*1,HEIGHT),1)
         pygame.draw.line(window,BLACK,(KEY_WIDTH*2,0),(KEY_WIDTH*2,HEIGHT),1)
         pygame.draw.line(window,BLACK,(KEY_WIDTH*3,0),(KEY_WIDTH*3,HEIGHT),1)
         
-        
+        # Partículas (efeito especial)
         mx , my = pygame.mouse.get_pos()
         particles.append([[mx, my], [random.randint(0, 20) / 10 - 1, -2], random.randint(4, 6)])
          
