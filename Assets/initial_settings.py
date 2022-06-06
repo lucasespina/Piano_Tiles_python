@@ -54,6 +54,8 @@ KEY_WIDTH = 125
 KEY_HEIGHT = 150
 window = pygame.display.set_mode((KEY_WIDTH*4,HEIGHT))
 pygame.display.set_caption("Insper Music")
+
+#Imagens usadas no jogo
 pygame.display.set_icon(pygame.image.load('Images/icone.png'))
 nota_img = pygame.image.load('Images/Tecla.png').convert_alpha()
 nota_img = pygame.transform.scale(nota_img, (KEY_WIDTH, KEY_HEIGHT))
@@ -93,6 +95,8 @@ all_notas = pygame.sprite.Group()
 background_image = pygame.image.load('Images/Fundo.png')
 lose_image = pygame.image.load('Images/lose.png')
 
+
+#Função do menu inicial
 def tela_menu_inicial(tela):
     
     # FUNDO 
@@ -100,8 +104,9 @@ def tela_menu_inicial(tela):
     
     return None
 
+#Função da tela de derrota
 def tela_menu_preta(tela,highscore):
-    # FUNDO 
+    
     tela.blit(lose_image, (0,0))
     highscoreFont = pygame.font.SysFont(None, 120)
     highscoretxt = highscoreFont.render('{0}'.format(highscore) , True, RED)

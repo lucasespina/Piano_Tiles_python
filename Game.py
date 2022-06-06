@@ -9,9 +9,12 @@ from Assets.initial_settings import *
 # Inicialização 
 pygame.init()
 
+
+#Definindo as fontes
 font = pygame.font.SysFont(None,48)
 scoreFont = pygame.font.SysFont(None, 40)
-highscoreFont = pygame.font.SysFont(None, 120)
+
+#Highscore inicial
 highscore = 0
 
 
@@ -20,6 +23,7 @@ while game:
     pos = None
     clock.tick(FPS)
 
+    #Texto do score formtado
     scoreText = scoreFont.render('{0}'.format(score) , True, RED)
 
     # EVENTOS
@@ -32,10 +36,13 @@ while game:
         if event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
             
+        #Restart o game ápos perder
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_r:
                     menuPreta = False  
         
+        
+    #Menu inicial
     if menu_inicial:
         tela_menu_inicial(window)
         if not play_one:
@@ -50,9 +57,10 @@ while game:
     elif menuPreta:
         tela_menu_preta(window,highscore)
         
+        
+        #Restaurando as condições inicias ápos perde
         pos = None
         score = 0
-        # highscore = 0
         
         x1 = 0
         x2 = 0 + KEY_WIDTH
@@ -130,9 +138,9 @@ while game:
         if pos and not certo:
             
             if score > highscore:
-                print('NEW HIGHSCORE')
                 highscore = score
             
+            # Ligando o menu
             menuPreta = True
             
             # Som de errado
@@ -144,6 +152,7 @@ while game:
         # Desenhando tela de jogo
         window.fill((WHITE))
         all_sprites.draw(window)
+        #Desenhando linhas
         pygame.draw.line(window,BLACK,(KEY_WIDTH*1,0),(KEY_WIDTH*1,HEIGHT),1)
         pygame.draw.line(window,BLACK,(KEY_WIDTH*2,0),(KEY_WIDTH*2,HEIGHT),1)
         pygame.draw.line(window,BLACK,(KEY_WIDTH*3,0),(KEY_WIDTH*3,HEIGHT),1)
