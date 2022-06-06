@@ -36,6 +36,9 @@ PINK = (255, 0, 255)
 LIGHT_BLUE = (0, 255, 255)
 GREY = (152,152,152)
 
+# lista cor efeito especial
+c_lista = [WHITE, BLACK, RED, GREY]
+
 pygame.mixer.init()
 
 sound_menu = pygame.mixer.Sound('Sounds/menu.wav')
