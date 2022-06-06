@@ -21,7 +21,7 @@
     -O objetivo é fazer a maior pontuação possivel sem errar
 
 -Vídeo do jogo funcionando:
-    -Youtube: 
+    -Youtube: https://youtu.be/CWGuXNiGYl8
 
 
 # =============== FONTES===============
