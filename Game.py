@@ -17,7 +17,7 @@ scoreFont = pygame.font.SysFont(None, 40)
 #Highscore inicial
 highscore = 0
 
-
+# 
 while game:
 
     pos = None
@@ -156,6 +156,20 @@ while game:
         pygame.draw.line(window,BLACK,(KEY_WIDTH*1,0),(KEY_WIDTH*1,HEIGHT),1)
         pygame.draw.line(window,BLACK,(KEY_WIDTH*2,0),(KEY_WIDTH*2,HEIGHT),1)
         pygame.draw.line(window,BLACK,(KEY_WIDTH*3,0),(KEY_WIDTH*3,HEIGHT),1)
+        
+        
+        mx , my = pygame.mouse.get_pos()
+        particles.append([[mx, my], [random.randint(0, 20) / 10 - 1, -2], random.randint(4, 6)])
+        
+        for particle in particles:
+            particle[0][0] += particle[1][0]
+            particle[0][1] += particle[1][1]
+            particle[2] -= 0.1
+            particle[1][1] += 0.1
+            pygame.draw.circle(window, (255, 0, 0), [int(particle[0][0]), int(particle[0][1])], int(particle[2]))
+            if particle[2] <= 0:
+                particles.remove(particle)
+            
 
         #Score Text
         window.blit(scoreText, (250, 10))

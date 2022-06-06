@@ -18,6 +18,12 @@ score = 0
 mixer.init()
 mixer.music.set_volume(0.07)
 
+#Particulas
+particles = []
+
+
+
+
 
 # CORES
 WHITE = (255, 255, 255)
