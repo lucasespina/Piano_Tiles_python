@@ -16,7 +16,7 @@ score = 0
 
 # Definindo sons
 mixer.init()
-mixer.music.set_volume(0.07)
+mixer.music.set_volume(10)
 
 #Particulas
 particles = []
